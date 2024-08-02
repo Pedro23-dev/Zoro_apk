@@ -22,7 +22,7 @@ class saveDepartementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=> 'required|unique:departements,name'
+            'name'=> 'required|unique:deps,name'
         ];
     }
     public function messages(): array

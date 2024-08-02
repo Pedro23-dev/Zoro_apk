@@ -21,7 +21,7 @@
     <div class="box">
         <h1>Espace de connexion</h1>
 
-        {{-- {{Hash::make('azerty')}}  --}}
+        {{-- {{Hash::make('azerty')}}   --}}
         @if (Session::get('error_msg'))
         <b style="font-size: 10px; color:red">{{Session::get('error_msg')}}</b>
 

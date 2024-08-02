@@ -3,7 +3,7 @@
 @section('content')
 			    <div class="row g-3 mb-4 align-items-center justify-content-between">
 				    <div class="col-auto">
-			            <h1 class="app-page-title mb-0">Orders</h1>
+			            <h1 class="app-page-title mb-0">Departements</h1>
 				    </div>
 				    <div class="col-auto">
 					     <div class="page-utilities">
@@ -57,8 +57,10 @@
                                                 <tr>
 												<td class="cell">{{$departement->id}}</td>
 												<td class="cell"><span class="truncate">{{$departement->name}}</span></td>
-												<td>Action</td>
-												
+												<td class="cell">
+												<a class="btn-sm app-btn-secondary" href="{{route('departement.edit', $departement->id)}}">Editer</a>
+												<a class="btn-sm app-btn-secondary" href="{{route('departement.delete', $departement->id)}}">Supprimer</a>
+												</td>
 											</tr>
                                             @empty
                                             <tr>

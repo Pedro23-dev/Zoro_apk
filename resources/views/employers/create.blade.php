@@ -12,7 +12,7 @@
 		                <div class="app-card app-card-settings shadow-sm p-4">
 						    
 						    <div class="app-card-body">
-							    <form class="settings-form" method="POST">
+							    <form class="settings-form" method="POST" action="{{route('employer.store')}}">
                                     @csrf
                                     @method('POST')
 
@@ -20,8 +20,15 @@
 									    <label for="setting-input-3" class="form-label">Departement</label>
 									   <select name="deps_id" id="deps_id" class="form-control">
                                         <option value=""></option>
+										@foreach ($departements as $departement)
+											 <option value="{{$departement->id}}">{{$departement->name}}</option>
+										@endforeach
                                        </select>
+									   @error('deps_id')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
 									</div>
+									
 
 								    <div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Nom<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info."><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -29,19 +36,38 @@
   <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
   <circle cx="8" cy="4.5" r="1"/>
 </svg></span></label>
-									    <input type="text" class="form-control" id="setting-input-1" placeholder="Entrez le nom de l'employé" name="firstname" required>
+									    <input type="text" class="form-control" id="setting-input-1" placeholder="Entrez le nom de l'employé" name="nom" value="{{old('nom')}}" required>
+										@error('nom')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-2" class="form-label">prenom</label>
-									    <input type="text" class="form-control" id="setting-input-2" name="lastname" placeholder="Entrez le prénom"  required>
+									    <input type="text" class="form-control" id="setting-input-2" name="prenom" value="{{old('prenom')}}" placeholder="Entrez le prénom"  required>
+										@error('prenom')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Email</label>
-									    <input type="email" class="form-control" id="setting-input-3" name="email"placeholder="Entrez le mail">
+									    <input type="email" class="form-control" id="setting-input-3" value="{{old('email')}}" name="email"placeholder="Entrez le mail" required>
+										@error('email')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Contact</label>
-									    <input type="text" class="form-control" id="setting-input-3" name="phone"placeholder="Entrez le contact">
+									    <input type="text" class="form-control" id="setting-input-3" value="{{old('contact')}}" name="contact"placeholder="Entrez le contact" required>
+										@error('contact')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
+									</div>
+								    <div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Montant journalier</label>
+									    <input type="number" class="form-control" id="setting-input-3" min="0" name="montant_journalier" value="{{old('montant_journalier')}}" placeholder="Entrez le montant journalier" required>
+										@error('montant_journalier')
+										<div class="text-danger">{{$message}}</div>
+									@enderror
 									</div>
 								    
 									<button type="submit" class="btn app-btn-primary" >Enregistrer</button>
