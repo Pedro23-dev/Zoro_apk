@@ -88,6 +88,7 @@
 							       <div class="item p-3">
 								        <div class="row gx-2 justify-content-between align-items-center">
 									        <div class="col-auto">
+
 										       <img class="profile-image" src="assets/images/profiles/profile-2.png" alt="">
 									        </div><!--//col-->
 									        <div class="col">
@@ -116,9 +117,15 @@
 </svg>
 					        </a>
 					    </div><!--//app-utility-item-->
-			            
+						{{-- <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+			             --}}
 			            <div class="app-utility-item app-user-dropdown dropdown">
-				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/user.png" alt="user profile"></a>
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+								
+								 <img src="https://ui-avatars.com/api/?name={{auth()->user()->name}}" alt="user profile" style="border-radius:50%"></a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><a class="dropdown-item" href="account.html">Account</a></li>
 								<li><a class="dropdown-item" href="settings.html">Settings</a></li>
