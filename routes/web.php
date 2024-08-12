@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/store', [EmployerController::class, 'store'])->name('employer.store');
         Route::put('/update/{employer}', [EmployerController::class, 'update'])->name('employer.update');
-        Route::get('/delete/{employer}', [EmployerController::class, 'delete'])->name('employer.delete');
+        Route::get('/{employer}', [EmployerController::class, 'delete'])->name('employer.delete');
 
     });
     //les routes pour les départements
@@ -43,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('configurations')->group(function () {
     Route::get('/', [ConfigurationController::class, 'index'])->name('configurations');
     Route::get('/create', [ConfigurationController::class, 'create'])->name('configurations.create');
+    Route::post('/store', [ConfigurationController::class, 'store'])->name('configurations.store');
+    Route::get('/{configuration}', [ConfigurationController::class, 'delete'])->name('configurations.delete');
     });
-
+  
 });
 

@@ -33,6 +33,9 @@
 					    </div><!--//table-utilities-->
 				    </div><!--//col-auto-->
 			    </div><!--//row-->
+                				@if (Session::get('success'))
+				<div class="alert alert-success">{{Session::get('success')}}</div>
+				@endif
 
 
 
@@ -57,11 +60,30 @@
                                             @forelse ($allConfigurations as $config)
                                                 <tr>
 												<td class="cell">{{$config->id}}</td>
-												<td class="cell"><span class="truncate">{{$config->type}}</span></td>
-												<td class="cell"><span class="truncate">{{$config->valeur}}</span></td>
+												<td class="cell"><span class="truncate">
+                                                  @if ($config->type ==='PAYMENT_DATE')
+                                                    Date de payement mensuelle
+
+                                                @endif
+                                                  @if ($config->type ==='APP_NAME')
+                                                   Le nom de l'application
+
+                                                @endif
+                                                  @if ($config->type ==='DEVELOPPER_NAME')
+                                                   Equipe de developpement
+
+
+
+                                                @endif
+                                               
+                                                </span></td>
+												<td class="cell"><span class="truncate">{{$config->value}}</span>
+                                                @if ($config->type ==='PAYMENT_DATE')
+                                                    de chaque mois
+                                                @endif
+                                            </td>
 												<td class="cell">
-												<a class="btn-sm app-btn-secondary" href="{{route('departement.edit', $config->id)}}">Editer</a>
-												<a class="btn-sm app-btn-secondary" href="{{route('departement.delete', $departement->id)}}">Supprimer</a>
+												<a class="btn-sm app-btn-secondary" href="{{route('configurations.delete', $config->id)}}">Supprimer</a>
 												</td>
 											</tr>
                                             @empty

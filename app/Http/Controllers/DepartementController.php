@@ -31,7 +31,7 @@ class DepartementController extends Controller
     }
     //interagir avec la bd
     public function store(Departement $departement, saveDepartementRequest $request){
-     
+
       try {
             // il y a cette methode
             // $newDepartement = new Departement();
@@ -45,7 +45,7 @@ class DepartementController extends Controller
 
     }
     public function update(Departement $departement, saveDepartementRequest $request){
-     
+
       try {
             // il y a cette methode
             // $newDepartement = new Departement();
@@ -59,15 +59,16 @@ class DepartementController extends Controller
 
     }
     public function delete(Departement $departement){
-     
+
       try {
             // il y a cette methode
             // $newDepartement = new Departement();
-           
+
             $departement->delete();
             return redirect()->route('departement.index')->with('success', 'Departement supprimé ');
       } catch (Exception $e) {
-            dd($e);
+            throw new Exception("Une erreur est survenue lors de la suppression");
+
       }
 
 

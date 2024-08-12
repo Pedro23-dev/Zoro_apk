@@ -13,7 +13,7 @@ class EmployerController extends Controller
     /**
      * Display a listing of the resource.
      */
-   
+
     /**
      * Show the form for creating a new resource.
      */
@@ -51,13 +51,14 @@ class EmployerController extends Controller
 
             return redirect()->route('employer.index')->with('success_message', 'Employer modifié');
 
-            
-            
+
+
         } catch (Exception $e) {
             dd($e);
         }
 
     }
+    //Pour creer l'employer dans la base de données
     public function store(StoreEmployeRequest $request)
     {
         try {
@@ -78,7 +79,7 @@ class EmployerController extends Controller
                 dd($e);
             }
         }
-        
+
     }
 
 
