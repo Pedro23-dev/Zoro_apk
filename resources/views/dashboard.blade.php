@@ -9,6 +9,43 @@
     @endif
  </div>
 
+{{-- @php
+    session()->flash('success_msg', 'Message de test');
+@endphp
+
+  @if(session('success_msg'))
+    <div class="alert alert-success">
+        {{ session('success_msg') }}
+    </div> --}}
+{{-- @endif --}}
+{{-- @php
+    $auth=auth()->user()->name;
+    session()->flash('success_msg', 'Vous etes connectés M/Mme' ." ". $auth);
+@endphp --}}
+
+{{-- @if(session('success_msg'))
+    <div id="success-alert" class="alert alert-success">
+        {{ session('success_msg') }}
+    </div>
+@endif --}}
+
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var successAlert = document.getElementById('success-alert');
+        if(successAlert) {
+            setTimeout(function() {
+                successAlert.style.transition = 'opacity 1s ease';
+                successAlert.style.opacity = '0';
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 1000); // Attendre que l'effet de fondu soit terminé
+            }, 5000); // Attendre 10 secondes avant de commencer l'effet de disparition
+        }
+    });
+</script> --}}
+
+
+
 
 
 			    <div class="row g-4 mb-4">
@@ -61,6 +98,7 @@
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 			    </div><!--//row-->
+
 
 
 @endsection

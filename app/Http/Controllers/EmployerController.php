@@ -58,6 +58,7 @@ class EmployerController extends Controller
         }
 
     }
+    
     //Pour creer l'employer dans la base de données
     public function store(StoreEmployeRequest $request)
     {

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/welcome', function () {
@@ -13,9 +15,13 @@ Route::get('/welcome', function () {
 Route::get('/',[AuthController::class, 'login'])->name('login');
 Route::post('/',[AuthController::class, 'handleLogin'])->name('handleLogin');
 
+Route::get('/validate-account/{email}', [AdminController::class, 'defineAccess']);
+Route::post('/validate-account/{email}', [AdminController::class, 'submitDefineAccess'])->name('submitDefineAccess');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AppController::class, 'index'])->name('dashboard');
+
 
 
 //les routes pour les employers
@@ -40,12 +46,36 @@ Route::middleware('auth')->group(function () {
         Route::get('/{departement}', [DepartementController::class, 'delete'])->name('departement.delete');
 
     });
+    //les routes pour les configurations
     Route::prefix('configurations')->group(function () {
     Route::get('/', [ConfigurationController::class, 'index'])->name('configurations');
     Route::get('/create', [ConfigurationController::class, 'create'])->name('configurations.create');
     Route::post('/store', [ConfigurationController::class, 'store'])->name('configurations.store');
     Route::get('/{configuration}', [ConfigurationController::class, 'delete'])->name('configurations.delete');
     });
-  
+//routes pour les administrateurs
+    Route::prefix('administrateurs')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('administrateurs');
+
+        Route::get('/create', [AdminController::class, 'create'])->name('administrateurs.create');
+
+        Route::post('/create', [AdminController::class, 'store'])->name('administrateurs.store');
+
+        Route::get('/edit/{administrateurs}', [AdminController::class, 'edit'])->name('administrateurs.edit');
+
+        Route::put('/edit/{administrateurs}', [AdminController::class, 'update'])->name('administrateurs.update');
+
+        Route::get('/delete/{user}', [AdminController::class, 'delete'])->name('administrateurs.delete');
+
+
+});
+
+    Route::prefix('payment')->group(function () {
+        Route::get('/', [PaymentController::class, 'index'])->name('payments');
+
+
+    });
+
+
 });
 

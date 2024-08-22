@@ -12,16 +12,22 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
+
     public function handleLogin(AuthRequest $request)
     {
-        // dd($request -> only(['email', 'password']));
-        $credentials =$request -> only(['email', 'password']);
-        if(Auth::attempt($credentials)){
-            return redirect()->route('dashboard'); 
-        }else{
-            return redirect()->back()->with('error_msg','Parametre de connexion non reconnue');
+        // Récupérer les informations d'identification de la requête
+        $credentials = $request->only(['email', 'password']);
+
+        // Tenter de connecter l'utilisateur
+        if (Auth::attempt($credentials)) {
+            // Vérifier que l'utilisateur est bien authentifié
+            if (Auth::check()) {
+                // Rediriger vers le tableau de bord avec un message de succès
+                return redirect()->route('dashboard')->with('success_msg', 'Vous etes connectés!');
+            }
+        } else {
+            // Si la tentative échoue, retourner à la page de connexion avec un message d'erreur
+            return redirect()->back()->with('error_msg', 'Paramètre de connexion non reconnu');
         }
     }
 }
-
-

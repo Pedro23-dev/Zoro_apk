@@ -57,6 +57,7 @@ class DepartementController extends Controller
       }
 
 
+
     }
     public function delete(Departement $departement){
 
