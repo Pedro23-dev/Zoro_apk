@@ -33,6 +33,9 @@ class DepartementController extends Controller
     public function store(Departement $departement, saveDepartementRequest $request){
 
       try {
+            // $today = date('d');
+            // dd($today);
+
             // il y a cette methode
             // $newDepartement = new Departement();
             $departement->name = $request->name;
@@ -41,7 +44,6 @@ class DepartementController extends Controller
       } catch (Exception $e) {
             dd($e);
       }
-
 
     }
     public function update(Departement $departement, saveDepartementRequest $request){

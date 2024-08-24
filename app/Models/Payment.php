@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+    protected $guarded = [];
+
+    public function employer(){
+        return $this->belongsTo(Employer::class);
+    }
     use HasFactory;
 }

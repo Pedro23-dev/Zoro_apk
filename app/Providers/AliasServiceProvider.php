@@ -11,7 +11,7 @@ class AliasServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
